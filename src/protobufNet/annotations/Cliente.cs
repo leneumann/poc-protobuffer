@@ -8,7 +8,7 @@ namespace src.protobufNet.annotations
 public class Cliente
 {
     [ProtoMember(1)]
-    public string PrimeroNome { get; set; }
+    public string PrimeiroNome { get; set; }
     [ProtoMember(2)]
     public string UltimoNome { get; set; }
     [ProtoMember(3)]

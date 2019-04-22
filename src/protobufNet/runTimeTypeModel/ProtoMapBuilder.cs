@@ -8,11 +8,17 @@ namespace src.protobufNet.runTimeTypeModel
     public interface IMapObject<T>
     {
         IMapProperty<T> MapProperty(Expression<Func<T, object>> expression);
+        IMapAllProperties<T> MapAllProperties();
     }
 
     public interface IMapProperty<T>
     {
         IMapProperty<T> MapProperty(Expression<Func<T, object>> expression);
+        IMapObject<Ttype> MapObject<Ttype>();
+        RuntimeTypeModel Build();
+    }
+    public interface IMapAllProperties<T>
+    {
         IMapObject<Ttype> MapObject<Ttype>();
         RuntimeTypeModel Build();
     }
@@ -29,8 +35,8 @@ namespace src.protobufNet.runTimeTypeModel
 
         public IMapObject<T> MapObject<T>() => new ProtoMapObject<T>(this);
     }
-    
-    public class ProtoMapObject<T> : IMapObject<T>, IMapProperty<T>
+
+    public class ProtoMapObject<T> : IMapObject<T>, IMapProperty<T>,IMapAllProperties<T>
     {
         private readonly ProtoMapBuilder _builder;
         private MetaType _metaType;
@@ -47,6 +53,17 @@ namespace src.protobufNet.runTimeTypeModel
         {
             _metaType.AddField(_index, GetPropertyName(expression));
             _index++;
+            return this;
+        }
+
+        public IMapAllProperties<T> MapAllProperties()
+        {
+            var properties = typeof(T).GetProperties();
+            for (int i = 0; i < properties.Length; i++)
+            {
+                _metaType.AddField(_index, properties[i].Name);
+                _index++;
+            }
             return this;
         }
         public RuntimeTypeModel Build() => _builder._runtimeTypeModel;

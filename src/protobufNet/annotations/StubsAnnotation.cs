@@ -15,7 +15,7 @@ namespace src.protobufNet.annotations
         public static Cliente CriarCliente()
         {
             var enderecos = CriarEnderecos();
-            return new Cliente() { DataNascimento = DateTime.Now, PrimeroNome = "Chico", UltimoNome = "Bento", Enderecos = enderecos };
+            return new Cliente() { DataNascimento = DateTime.Now, PrimeiroNome = "Chico", UltimoNome = "Bento", Enderecos = enderecos };
         }
 
         private static List<Endereco> CriarEnderecos()

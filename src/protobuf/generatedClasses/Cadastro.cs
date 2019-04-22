@@ -25,18 +25,18 @@ namespace src.protobuf.generatedClasses {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5DYWRhc3Ryby5wcm90bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5w",
-            "cm90byKqAgoIQ2FkYXN0cm8SIwoIQ2xpZW50ZXMYASADKAsyES5DYWRhc3Ry",
-            "by5DbGllbnRlGvgBCgdDbGllbnRlEhMKC1ByaW1lcm9Ob21lGAEgASgJEhIK",
-            "ClVsdGltb05vbWUYAiABKAkSMgoORGF0YU5hc2NpbWVudG8YAyABKAsyGi5n",
-            "b29nbGUucHJvdG9idWYuVGltZXN0YW1wEi0KCUVuZGVyZWNvcxgEIAMoCzIa",
-            "LkNhZGFzdHJvLkNsaWVudGUuRW5kZXJlY28aYQoIRW5kZXJlY28SEgoKTG9n",
-            "cmFkb3VybxgBIAEoCRITCgtDb21wbGVtZW50bxgCIAEoCRIOCgZCYWlycm8Y",
-            "AyABKAkSDgoGQ2lkYWRlGAQgASgJEgwKBFBhaXMYBSABKAlCIKoCHXNyYy5w",
-            "cm90b2J1Zi5nZW5lcmF0ZWRDbGFzc2VzYgZwcm90bzM="));
+            "cm90byKrAgoIQ2FkYXN0cm8SIwoIQ2xpZW50ZXMYASADKAsyES5DYWRhc3Ry",
+            "by5DbGllbnRlGvkBCgdDbGllbnRlEhQKDFByaW1laXJvTm9tZRgBIAEoCRIS",
+            "CgpVbHRpbW9Ob21lGAIgASgJEjIKDkRhdGFOYXNjaW1lbnRvGAMgASgLMhou",
+            "Z29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBItCglFbmRlcmVjb3MYBCADKAsy",
+            "Gi5DYWRhc3Ryby5DbGllbnRlLkVuZGVyZWNvGmEKCEVuZGVyZWNvEhIKCkxv",
+            "Z3JhZG91cm8YASABKAkSEwoLQ29tcGxlbWVudG8YAiABKAkSDgoGQmFpcnJv",
+            "GAMgASgJEg4KBkNpZGFkZRgEIAEoCRIMCgRQYWlzGAUgASgJQiCqAh1zcmMu",
+            "cHJvdG9idWYuZ2VuZXJhdGVkQ2xhc3Nlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::src.protobuf.generatedClasses.Cadastro), global::src.protobuf.generatedClasses.Cadastro.Parser, new[]{ "Clientes" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::src.protobuf.generatedClasses.Cadastro.Types.Cliente), global::src.protobuf.generatedClasses.Cadastro.Types.Cliente.Parser, new[]{ "PrimeroNome", "UltimoNome", "DataNascimento", "Enderecos" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::src.protobuf.generatedClasses.Cadastro.Types.Cliente.Types.Endereco), global::src.protobuf.generatedClasses.Cadastro.Types.Cliente.Types.Endereco.Parser, new[]{ "Logradouro", "Complemento", "Bairro", "Cidade", "Pais" }, null, null, null)})})
+            new pbr::GeneratedClrTypeInfo(typeof(global::src.protobuf.generatedClasses.Cadastro), global::src.protobuf.generatedClasses.Cadastro.Parser, new[]{ "Clientes" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::src.protobuf.generatedClasses.Cadastro.Types.Cliente), global::src.protobuf.generatedClasses.Cadastro.Types.Cliente.Parser, new[]{ "PrimeiroNome", "UltimoNome", "DataNascimento", "Enderecos" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::src.protobuf.generatedClasses.Cadastro.Types.Cliente.Types.Endereco), global::src.protobuf.generatedClasses.Cadastro.Types.Cliente.Types.Endereco.Parser, new[]{ "Logradouro", "Complemento", "Bairro", "Cidade", "Pais" }, null, null, null)})})
           }));
     }
     #endregion
@@ -191,7 +191,7 @@ namespace src.protobuf.generatedClasses {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public Cliente(Cliente other) : this() {
-          primeroNome_ = other.primeroNome_;
+          primeiroNome_ = other.primeiroNome_;
           ultimoNome_ = other.ultimoNome_;
           dataNascimento_ = other.dataNascimento_ != null ? other.dataNascimento_.Clone() : null;
           enderecos_ = other.enderecos_.Clone();
@@ -203,14 +203,14 @@ namespace src.protobuf.generatedClasses {
           return new Cliente(this);
         }
 
-        /// <summary>Field number for the "PrimeroNome" field.</summary>
-        public const int PrimeroNomeFieldNumber = 1;
-        private string primeroNome_ = "";
+        /// <summary>Field number for the "PrimeiroNome" field.</summary>
+        public const int PrimeiroNomeFieldNumber = 1;
+        private string primeiroNome_ = "";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string PrimeroNome {
-          get { return primeroNome_; }
+        public string PrimeiroNome {
+          get { return primeiroNome_; }
           set {
-            primeroNome_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+            primeiroNome_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
         }
 
@@ -259,7 +259,7 @@ namespace src.protobuf.generatedClasses {
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (PrimeroNome != other.PrimeroNome) return false;
+          if (PrimeiroNome != other.PrimeiroNome) return false;
           if (UltimoNome != other.UltimoNome) return false;
           if (!object.Equals(DataNascimento, other.DataNascimento)) return false;
           if(!enderecos_.Equals(other.enderecos_)) return false;
@@ -269,7 +269,7 @@ namespace src.protobuf.generatedClasses {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (PrimeroNome.Length != 0) hash ^= PrimeroNome.GetHashCode();
+          if (PrimeiroNome.Length != 0) hash ^= PrimeiroNome.GetHashCode();
           if (UltimoNome.Length != 0) hash ^= UltimoNome.GetHashCode();
           if (dataNascimento_ != null) hash ^= DataNascimento.GetHashCode();
           hash ^= enderecos_.GetHashCode();
@@ -286,9 +286,9 @@ namespace src.protobuf.generatedClasses {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (PrimeroNome.Length != 0) {
+          if (PrimeiroNome.Length != 0) {
             output.WriteRawTag(10);
-            output.WriteString(PrimeroNome);
+            output.WriteString(PrimeiroNome);
           }
           if (UltimoNome.Length != 0) {
             output.WriteRawTag(18);
@@ -307,8 +307,8 @@ namespace src.protobuf.generatedClasses {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (PrimeroNome.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(PrimeroNome);
+          if (PrimeiroNome.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(PrimeiroNome);
           }
           if (UltimoNome.Length != 0) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(UltimoNome);
@@ -328,8 +328,8 @@ namespace src.protobuf.generatedClasses {
           if (other == null) {
             return;
           }
-          if (other.PrimeroNome.Length != 0) {
-            PrimeroNome = other.PrimeroNome;
+          if (other.PrimeiroNome.Length != 0) {
+            PrimeiroNome = other.PrimeiroNome;
           }
           if (other.UltimoNome.Length != 0) {
             UltimoNome = other.UltimoNome;
@@ -353,7 +353,7 @@ namespace src.protobuf.generatedClasses {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
               case 10: {
-                PrimeroNome = input.ReadString();
+                PrimeiroNome = input.ReadString();
                 break;
               }
               case 18: {

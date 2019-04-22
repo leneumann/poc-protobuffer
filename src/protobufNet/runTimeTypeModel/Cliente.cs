@@ -7,7 +7,7 @@ namespace src.protobufNet.runTimeTypeModel
 
 public class Cliente
 {
-    public string PrimeroNome { get; set; }
+    public string PrimeiroNome { get; set; }
     public string UltimoNome { get; set; }
     public DateTime DataNascimento { get; set; }
     public List<Endereco> Enderecos { get; set; }

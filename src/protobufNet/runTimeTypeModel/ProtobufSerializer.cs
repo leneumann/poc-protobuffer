@@ -17,7 +17,7 @@ namespace src.protobufNet.runTimeTypeModel
             cadastro.AddField(1, Path<Cadastro>(x => x.clientes));
 
             var cliente = _runtimeTypeModel.Add(typeof(Cliente), true);
-            cliente.AddField(1, Path<Cliente>(x => x.PrimeroNome));
+            cliente.AddField(1, Path<Cliente>(x => x.PrimeiroNome));
             cliente.AddField(2, Path<Cliente>(x => x.UltimoNome));
             cliente.AddField(3, Path<Cliente>(x => x.DataNascimento));
             cliente.AddField(4, Path<Cliente>(x => x.Enderecos));

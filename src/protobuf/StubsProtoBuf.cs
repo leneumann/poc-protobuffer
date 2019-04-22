@@ -18,7 +18,7 @@ namespace src.protobuf
         {
             var enderecos = CriarEndereco(100);
             Timestamp dataNascimento = Timestamp.FromDateTime(DateTime.UtcNow);
-            return new Cadastro.Types.Cliente { PrimeroNome = "Chico", UltimoNome = "Bento", DataNascimento = dataNascimento, Enderecos = { enderecos } };
+            return new Cadastro.Types.Cliente { PrimeiroNome = "Chico", UltimoNome = "Bento", DataNascimento = dataNascimento, Enderecos = { enderecos } };
         }
 
         private static Cadastro.Types.Cliente.Types.Endereco[] CriarEndereco(int times)

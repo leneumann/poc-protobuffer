@@ -7,20 +7,13 @@ namespace src.protobufNet.runTimeTypeModel
     {
         public void SerializarEDeserializarPayloadDeCadastroClientes(int times)
         {
-            var proto = ProtoMapBuilder.New()
+           var proto = ProtoMapBuilder.New()
             .MapObject<Cadastro>()
-            .MapProperty(cadastro => cadastro.clientes)
+            .MapAllProperties()
             .MapObject<Cliente>()
-            .MapProperty(cliente => cliente.PrimeroNome)
-            .MapProperty(cliente => cliente.UltimoNome)
-            .MapProperty(cliente => cliente.DataNascimento)
-            .MapProperty(cliente => cliente.Enderecos)
+            .MapAllProperties()
             .MapObject<Endereco>()
-            .MapProperty(endereco => endereco.Logradouro)
-            .MapProperty(endereco => endereco.Complemento)
-            .MapProperty(endereco => endereco.Bairro)
-            .MapProperty(endereco => endereco.Cidade)
-            .MapProperty(endereco => endereco.Pais)
+            .MapAllProperties()
             .Build();
 
             IProtoBufferSerializer Serializer = new ProtoBufferSerializer(proto);

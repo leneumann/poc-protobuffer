@@ -7,7 +7,7 @@ option csharp_namespace = "src.protobuf.generatedClasses";
 
 message Cadastro{
     message Cliente{
-        string PrimeroNome = 1;
+        string PrimeiroNome = 1;
         string UltimoNome = 2;
         google.protobuf.Timestamp DataNascimento = 3;
         repeated Endereco Enderecos = 4;

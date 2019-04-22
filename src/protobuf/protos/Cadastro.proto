@@ -1,0 +1,25 @@
+//protoc -I=protobuf/protos/ --csharp_out=protobuf/generatedClasses protobuf/protos/Cadastro.proto
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "src.protobuf.generatedClasses";
+
+message Cadastro{
+    message Cliente{
+        string PrimeroNome = 1;
+        string UltimoNome = 2;
+        google.protobuf.Timestamp DataNascimento = 3;
+        repeated Endereco Enderecos = 4;
+    
+        message Endereco{
+            string Logradouro = 1;
+            string Complemento = 2;
+            string Bairro = 3;
+            string Cidade = 4;
+            string Pais = 5;
+        }
+    }
+    repeated Cliente Clientes = 1;
+}
+

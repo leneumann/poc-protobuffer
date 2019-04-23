@@ -10,22 +10,22 @@ namespace protobuf_poc
     {
         static void Main(string[] args)
         {
-            int times = 50000;
+            int quantity = 50000;
             var protobufSimulator = new ProtobufSimulator();
-            protobufSimulator.SerializarEDeserializarPayloadDeCadastroClientes(times);
-            protobufSimulator.SerializarEDeserializarPayloadsDeCliente(times);
+            protobufSimulator.SerializarEDeserializarPayloadDeCadastroClientes(quantity);
+            protobufSimulator.SerializarEDeserializarPayloadsDeCliente(quantity);
 
             var annotationsSimulator = new AnnotationsSimulator();
-            annotationsSimulator.SerializarEDeserializarPayloadDeCadastroClientes(times);
-            annotationsSimulator.SerializarEDeserializarPayloadsDeCliente(times);
+            annotationsSimulator.SerializarEDeserializarPayloadDeCadastroClientes(quantity);
+            annotationsSimulator.SerializarEDeserializarPayloadsDeCliente(quantity);
 
             var runTimeTypeModelSimulator = new RunTimeTypeModelSimulator();
-            runTimeTypeModelSimulator.SerializarEDeserializarPayloadDeCadastroClientes(times);
-            runTimeTypeModelSimulator.SerializarEDeserializarPayloadsDeCliente(times);
+            runTimeTypeModelSimulator.SerializarEDeserializarPayloadDeCadastroClientes(quantity);
+            runTimeTypeModelSimulator.SerializarEDeserializarPayloadsDeCliente(quantity);
 
             var jsonSimulator = new JsonSimulator();
-            jsonSimulator.SerializarEDeserializarPayloadDeCadastroClientes(times); //Passando 10000 para não ocorrer erro.
-            jsonSimulator.SerializarEDeserializarPayloadsDeCliente(times);
+            jsonSimulator.SerializarEDeserializarPayloadDeCadastroClientes(quantity);
+            jsonSimulator.SerializarEDeserializarPayloadsDeCliente(quantity);
         }
     }
 }

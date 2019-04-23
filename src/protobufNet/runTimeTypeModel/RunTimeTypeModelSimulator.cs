@@ -1,13 +1,15 @@
 using System;
 using System.Diagnostics;
+using ProtoBuf.Meta;
 
 namespace src.protobufNet.runTimeTypeModel
 {
     public class RunTimeTypeModelSimulator
     {
-        public void SerializarEDeserializarPayloadDeCadastroClientes(int times)
+        private readonly RuntimeTypeModel _proto;
+        public RunTimeTypeModelSimulator()
         {
-           var proto = ProtoMapBuilder.New()
+            _proto = ProtoMapBuilder.New()
             .MapObject<Cadastro>()
             .MapAllProperties()
             .MapObject<Cliente>()
@@ -15,44 +17,43 @@ namespace src.protobufNet.runTimeTypeModel
             .MapObject<Endereco>()
             .MapAllProperties()
             .Build();
+        }
+        public void SerializarEDeserializarPayloadDeCadastroClientes(int quantity)
+        {
+            int lengthOf = 0;
+            IProtoBufferSerializer Serializer = new ProtoBufferSerializer(_proto);
+            var cadastro = StubsRunTimeTypeModel.CriarCadastro(quantity);
+            Stopwatch watch = Stopwatch.StartNew();
+            var stream = Serializer.Serialize<Cadastro>(cadastro);
+            watch.Stop();
+            lengthOf = stream.Length;
+            Console.WriteLine("RunTime " + typeof(RunTimeTypeModelSimulator).Name + " Serialize a full payload of " + quantity +" Objects " + watch.Elapsed.ToFormatedString() + ", Total of bytes serialized " + lengthOf);
+            watch.Restart();
+            cadastro = Serializer.Deserialize<Cadastro>(stream);
+            watch.Stop();
+            Console.WriteLine("RunTime " + typeof(RunTimeTypeModelSimulator).Name + " Deserialize a full payload of " + quantity +" Objects " + watch.Elapsed.ToFormatedString());
+        }
 
-            IProtoBufferSerializer Serializer = new ProtoBufferSerializer(proto);
+        public void SerializarEDeserializarPayloadsDeCliente(int times)
+        {
+            IProtoBufferSerializer Serializer = new ProtoBufferSerializer(_proto);
 
-            Stopwatch watch = null;
-            TimeSpan ts = new TimeSpan();
+            Stopwatch watch = Stopwatch.StartNew();
+            TimeSpan tsSerialization = new TimeSpan();
+            TimeSpan tsDeSerialization = new TimeSpan();
             for (int i = 0; i < times; i++)
             {
                 var cliente = StubsRunTimeTypeModel.CriarCliente();
-                watch = Stopwatch.StartNew();
                 var stream = Serializer.Serialize<Cliente>(cliente);
-                cliente = Serializer.Deserialize<Cliente>(stream);
                 watch.Stop();
-                ts += watch.Elapsed;
+                tsSerialization += watch.Elapsed;
+                watch.Restart();
+                cliente = Serializer.Deserialize<Cliente>(stream);
+                tsDeSerialization += watch.Elapsed;
+                watch.Restart();
             }
-            string elapsedTimeSerialize = String.Format("{0:00}:{1:00}:{2:00}.{3:000}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
-            Console.WriteLine("RunTime Proto.net SErialize " + elapsedTimeSerialize + ", Total bytes serializing " + times + " objects");
-        }
-
-
-        public void simularJson(int times)
-        {
-            string json = null;
-            int lengthOf = 0;
-            var cadastro = StubsRunTimeTypeModel.CriarCadastro(times);
-            var watch = Stopwatch.StartNew();
-            json = Newtonsoft.Json.JsonConvert.SerializeObject(cadastro);
-            watch.Stop();
-            TimeSpan ts = watch.Elapsed;
-            lengthOf = System.Text.ASCIIEncoding.Unicode.GetByteCount(json);
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:000}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
-            Console.WriteLine("RunTime Json Serialize " + elapsedTime + ", Total bytes per serialization " + lengthOf);
-
-            watch = Stopwatch.StartNew();
-            cadastro = Newtonsoft.Json.JsonConvert.DeserializeObject<Cadastro>(json);
-            watch.Stop();
-            ts = watch.Elapsed;
-            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:000}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
-            Console.WriteLine("RunTime Json Deserialize " + elapsedTime + ", Total bytes per serialization");
+            Console.WriteLine("RunTime " + typeof(RunTimeTypeModelSimulator).Name + " time accumulated to Serialize " + times + " Objects " + tsSerialization.ToFormatedString());
+            Console.WriteLine("RunTime " + typeof(RunTimeTypeModelSimulator).Name + " time accumulated to Deserialize " + tsDeSerialization.ToFormatedString());
         }
     }
 }

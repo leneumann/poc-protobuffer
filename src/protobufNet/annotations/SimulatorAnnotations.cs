@@ -1,33 +1,31 @@
 using System;
 using System.Diagnostics;
 
-
 namespace src.protobufNet.annotations
 {
-    public class SimulatorAnnotations
+    public class AnnotationsSimulator
     {
-        public void SerializarEDeserializarPayloadDeCadastroClientes(int times)
+        public void SerializarEDeserializarPayloadDeCadastroClientes(int quantity)
         {
-            var cadastro = StubsAnnotation.CriarCadastro(times);
+            var cadastro = StubsAnnotation.CriarCadastro(quantity);
             int lengthOf = 0;
             var watch = Stopwatch.StartNew();
             var stream = Serializer.Serialize<Cadastro>(cadastro);
             watch.Stop();
             lengthOf = stream.Length;
-            Console.WriteLine("RunTime ProtoBuffer " + typeof(SimulatorAnnotations).Name + " SErialize " + watch.Elapsed.ToFormatedString() + ", Total bytes per serialization " + lengthOf);
+            Console.WriteLine("RunTime " + typeof(AnnotationsSimulator).Name + " Serialize a full payload of " + quantity + " Objects " + watch.Elapsed.ToFormatedString() + ", Total of bytes serialized " + lengthOf);
             watch.Restart();
             cadastro = Serializer.Deserialize<Cadastro>(stream);
             watch.Stop();
-            Console.WriteLine("RunTime ProtoBuffer " + typeof(SimulatorAnnotations).Name + " DEserialize " + watch.Elapsed.ToFormatedString());
+            Console.WriteLine("RunTime " + typeof(AnnotationsSimulator).Name + " Deserialize a full payload of " + quantity + " Objects " + watch.Elapsed.ToFormatedString());
         }
 
-
-        public void  SerializarEDeserializarPayloadsDeCliente(int times)
+        public void SerializarEDeserializarPayloadsDeCliente(int quantity)
         {
             Stopwatch watch = Stopwatch.StartNew();
             TimeSpan tsSerialization = new TimeSpan();
             TimeSpan tsDeSerialization = new TimeSpan();
-            for (int i = 0; i < times; i++)
+            for (int i = 0; i < quantity; i++)
             {
                 var cliente = StubsAnnotation.CriarCliente();
                 var stream = Serializer.Serialize<Cliente>(cliente);
@@ -38,8 +36,8 @@ namespace src.protobufNet.annotations
                 tsDeSerialization += watch.Elapsed;
                 watch.Restart();
             }
-         Console.WriteLine("RunTime " + typeof(SimulatorAnnotations).Name + " time accumulated to SErialize " + times + " Objects " + tsSerialization.ToFormatedString());
-            Console.WriteLine("RunTime " + typeof(SimulatorAnnotations).Name + " time accumulated to DeSErialize " + tsDeSerialization.ToFormatedString());
+            Console.WriteLine("RunTime " + typeof(AnnotationsSimulator).Name + " time accumulated to Serialize " + quantity + " Objects " + tsSerialization.ToFormatedString());
+            Console.WriteLine("RunTime " + typeof(AnnotationsSimulator).Name + " time accumulated to Deserialize " + tsDeSerialization.ToFormatedString());
         }
     }
 }

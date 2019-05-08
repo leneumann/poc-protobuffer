@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using ProtoBuf.Meta;
+using ProtoMapper;
 
 namespace src.protobufNet.runTimeTypeModel
 {
